@@ -67,8 +67,8 @@ def test_read_user(client):
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {
         # UserPublic
-        'username': 'marcos_found',
-        'email': 'marcos@found.com.br',
+        'username': 'marcos',
+        'email': 'marcos@aula.com.br',
         'id': 1,
     }
 
@@ -77,7 +77,7 @@ def test_read_user_not_found(client):
     # client = TestClient(app)  # Arrange
 
     # Act
-    response = client.get('/users/0')
+    response = client.get('/user/0')
 
     # Assert
     assert response.status_code == HTTPStatus.NOT_FOUND

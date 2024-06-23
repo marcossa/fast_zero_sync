@@ -35,14 +35,16 @@ def read_users():
     return {'users': database}
 
 
-@app.get('/users/{id}', response_model=UserPublic)
+@app.get('/user/{id}', response_model=UserPublic)
 def read_user(id: int):
     if id > len(database) or id < 1:
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail='User not found'
         )
 
-    return database[id - 1]
+    user = database[id - 1]
+
+    return user
 
 
 @app.put('/users/{user_id}', response_model=UserPublic)
